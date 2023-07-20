@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:41:40 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/14 16:42:18 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 17:45:52 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static size_t	getwords(char const *s, char c);
 static char		**getres(char **result, size_t wordcnt, char const *s, char c);
-static char		**freeresult(size_t i, char **result);
 
 char	**ft_split(char const *s, char c)
 {
@@ -76,7 +75,7 @@ static char	**getres(char **result, size_t wordcnt, char const *s, char c)
 	return (result);
 }
 
-static char	**freeresult(size_t i, char **result)
+char	**freeresult(size_t i, char **result)
 {
 	size_t	index;
 
@@ -87,5 +86,6 @@ static char	**freeresult(size_t i, char **result)
 		index++;
 	}
 	free(result);
+	result = NULL;
 	return (0);
 }

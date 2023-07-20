@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 14:31:39 by sgo               #+#    #+#              #
-#    Updated: 2023/07/20 15:40:59 by sgo              ###   ########.fr        #
+#    Updated: 2023/07/20 18:14:09 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rs
 RM = rm -f
 SRCS = main.c info_util.c stack_reverse.c stack_rotate.c \
-stack_push_swap.c array_util.c indexing_stack_a.c\
-LIBFT/ft_atoi.c LIBFT/ft_split.c LIBFT/ft_strlcpy.c LIBFT/ft_strlen.c 
+stack_push_swap.c array_util.c indexing_stack_a.c \
+pivot.c \
+LIBFT/ft_atoi.c LIBFT/ft_split.c LIBFT/ft_strlcpy.c LIBFT/ft_strlen.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./LIBFT/
 

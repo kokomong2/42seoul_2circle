@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 15:35:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 17:51:50 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ int	get_str_size(int argc, char *argv[])
 		j = 0;
 		arr = ft_split(argv[i], ' ');
 		if (!arr)
-			return (0);
+			exit (1);
 		while (arr[j])
 		{
 			len++;
 			j++;
 		}
 		i++;
+		freeresult(j, arr);
 	}
 	return (len);
 }
@@ -58,6 +59,7 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 			info->top_index_a++;
 			i++;
 		}
+		freeresult(j, arr);
 	}
 }
 
