@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 15:17:13 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 15:39:56 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void	ft_reverse_a(t_info *info);
 void	ft_reverse_b(t_info *info);
 void	ft_rrr(t_info *info);
 void	array_sort(t_info *info, int array_size);
+void	binary_search(t_info *info, int index, int low, int high);
+void	indexing_stack_a(t_info *info);
 
 // test
 #include <stdio.h>
 void print_stack(t_info *info);
+void print_array(t_info *info, int array_size);
 //test
 #endif

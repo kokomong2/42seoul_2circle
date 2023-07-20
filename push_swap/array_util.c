@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 15:17:06 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 15:35:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,22 @@ void	array_sort(t_info *info, int array_size)
 		}
 		i++;
 	}
+}
+
+void	binary_search(t_info *info, int index, int low, int high)
+{
+	int	mid;
+
+	if (low > high)
+		return ;
+	mid = (low + high) / 2;
+	if (info->array[mid] == info->stack_a[index])
+	{
+		info->stack_a[index] = mid;
+		return ;
+	}
+	else if (info->array[mid] > info->stack_a[index])
+		return binary_search(info, index, low, mid - 1);
+	else
+		return binary_search(info, index, mid + 1, high);
 }
