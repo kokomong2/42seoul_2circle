@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/19 20:06:51 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 15:17:13 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 # define PUSHSWAP_H
 
 # include "./LIBFT/libft.h"
-
-typedef struct s_stack
-{
-	struct s_stack	*prev;
-	int				content;
-	struct s_stack	*next;
-}		t_stack;
 
 typedef struct s_info
 {
@@ -46,6 +39,7 @@ void	ft_rr(t_info *info);
 void	ft_reverse_a(t_info *info);
 void	ft_reverse_b(t_info *info);
 void	ft_rrr(t_info *info);
+void	array_sort(t_info *info, int array_size);
 
 // test
 #include <stdio.h>

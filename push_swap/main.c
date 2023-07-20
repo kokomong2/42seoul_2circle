@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:05:00 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/19 20:13:23 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 15:19:36 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,15 @@ int main(int argc, char* argv[])
 	info = ft_info_new(array_size);
 	ft_argv_to_array(argv, array_size, info);
 	print_stack(info);
-	ft_reverse_a(info);
-	print_stack(info);
+	printf("array\n");
+	for (int i = 0; i < array_size; i++)
+		printf("%d ", info->array[i]);
+	printf("\n");
+	array_sort(info, array_size);
+	printf("sored_array\n");
+	for (int i = 0; i < array_size; i++)
+		printf("%d ", info->array[i]);
+	printf("\n");
 }
 
 //test
