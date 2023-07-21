@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 17:51:50 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 20:05:00 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_str_size(int argc, char *argv[])
 	int		i;
 	int		j;
 	char	**arr;
-	
+
 	i = 1;
 	len = 0;
 	while (i < argc)
@@ -53,10 +53,12 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 		if (!arr)
 			exit(1);
 		argv++;
-		while (arr[j]){
+		while (arr[j])
+		{
 			info->array[i] = ft_atoi(arr[j++]);
 			info->stack_a[i] = info->array[i];
 			info->top_index_a++;
+			info->size_a++;
 			i++;
 		}
 		freeresult(j, arr);
@@ -102,7 +104,7 @@ void	binary_search(t_info *info, int index, int low, int high)
 		return ;
 	}
 	else if (info->array[mid] > info->stack_a[index])
-		return binary_search(info, index, low, mid - 1);
+		return (binary_search(info, index, low, mid - 1));
 	else
-		return binary_search(info, index, mid + 1, high);
+		return (binary_search(info, index, mid + 1, high));
 }

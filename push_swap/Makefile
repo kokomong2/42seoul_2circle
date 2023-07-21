@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 14:31:39 by sgo               #+#    #+#              #
-#    Updated: 2023/07/20 18:14:09 by sgo              ###   ########.fr        #
+#    Updated: 2023/07/21 14:25:00 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ AR = ar rs
 RM = rm -f
 SRCS = main.c info_util.c stack_reverse.c stack_rotate.c \
 stack_push_swap.c array_util.c indexing_stack_a.c \
-pivot.c \
+pivot.c greedy.c greedy_util.c\
 LIBFT/ft_atoi.c LIBFT/ft_split.c LIBFT/ft_strlcpy.c LIBFT/ft_strlen.c
 OBJS = $(SRCS:.c=.o)
 LIBFT_DIR = ./LIBFT/

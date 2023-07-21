@@ -6,13 +6,13 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 19:59:16 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/19 20:06:36 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/21 14:25:27 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_reverse_a(t_info *info)
+void	ft_rra(t_info *info)
 {
 	int	tmp;
 	int	i;
@@ -29,7 +29,7 @@ void	ft_reverse_a(t_info *info)
 	info->stack_a[info->top_index_a - 1] = tmp;
 }
 
-void	ft_reverse_b(t_info *info)
+void	ft_rrb(t_info *info)
 {
 	int	tmp;
 	int	i;
@@ -48,6 +48,6 @@ void	ft_reverse_b(t_info *info)
 
 void	ft_rrr(t_info *info)
 {
-	ft_reverse_a(info);
-	ft_reverse_b(info);
+	ft_rra(info);
+	ft_rrb(info);
 }

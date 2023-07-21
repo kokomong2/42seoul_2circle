@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_rotate_reverse.c                             :+:      :+:    :+:   */
+/*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:11:29 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/19 19:55:05 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/20 21:04:35 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	ft_rotate_a(t_info *info)
+void	ft_ra(t_info *info)
 {
 	int	tmp;
 	int	i;
@@ -29,7 +29,7 @@ void	ft_rotate_a(t_info *info)
 	info->stack_a[info->bottom_index_a] = tmp;
 }
 
-void	ft_rotate_b(t_info *info)
+void	ft_rb(t_info *info)
 {
 	int	tmp;
 	int	i;
@@ -48,6 +48,6 @@ void	ft_rotate_b(t_info *info)
 
 void	ft_rr(t_info *info)
 {
-	ft_rotate_a(info);
-	ft_rotate_b(info);
+	ft_ra(info);
+	ft_rb(info);
 }
