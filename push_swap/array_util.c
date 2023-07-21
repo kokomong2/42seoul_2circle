@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 20:05:00 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/21 18:58:57 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 	int		j;
 	char	**arr;
 
-	i = 0;
+	i = array_size - 1;
 	argv++;
-	while (i < array_size)
+	while (i >= 0)
 	{
 		j = 0;
 		arr = ft_split(*argv, ' ');
@@ -59,7 +59,7 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 			info->stack_a[i] = info->array[i];
 			info->top_index_a++;
 			info->size_a++;
-			i++;
+			i--;
 		}
 		freeresult(j, arr);
 	}

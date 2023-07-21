@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:05:00 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/21 17:34:58 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/21 18:59:40 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 	get_pivot(info, array_size);
 	// print_stack(info);
 	greedy(info);
-	print_stack(info);
+	// print_stack(info);
 	return (0);
 }
 
