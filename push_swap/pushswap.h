@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/21 14:28:07 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/24 15:31:09 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_info
 
 void	ft_swap_a(t_info *info);
 t_info	*ft_info_new(int size);
-void 	print_error(int type);
+void 	print_error();
 int		get_str_size(int argc, char *argv[]);
 void	ft_argv_to_array(char *argv[], int array_size, t_info	*info);
 void	ft_ss(t_info *info);
@@ -52,6 +52,7 @@ void	ft_rotate_a(t_info *info, int a);
 void	ft_rotate_b(t_info *info, int b);
 int		ft_abs(int a);
 void	greedy(t_info *info);
+void	check_duplicate(int *array, int array_size, int check);
 
 
 // test

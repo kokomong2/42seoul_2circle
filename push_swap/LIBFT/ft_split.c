@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:41:40 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 17:45:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/24 16:02:30 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../pushswap.h"
 
 static size_t	getwords(char const *s, char c);
 static char		**getres(char **result, size_t wordcnt, char const *s, char c);
@@ -22,6 +22,8 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
+	if (!ft_strlen(s))
+		print_error();
 	wordcnt = getwords(s, c);
 	res = (char **)malloc(sizeof(char *) * (wordcnt + 1));
 	if (!res)

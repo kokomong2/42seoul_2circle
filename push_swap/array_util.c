@@ -6,11 +6,12 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/21 18:58:57 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/24 16:02:00 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
 
 int	get_str_size(int argc, char *argv[])
 {
@@ -43,6 +44,7 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 	int		i;
 	int		j;
 	char	**arr;
+	int		tmp;
 
 	i = array_size - 1;
 	argv++;
@@ -55,7 +57,9 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 		argv++;
 		while (arr[j])
 		{
-			info->array[i] = ft_atoi(arr[j++]);
+			tmp = ft_atoi(arr[j++]);
+			check_duplicate(info->array, array_size, tmp);
+			info->array[i] = tmp;
 			info->stack_a[i] = info->array[i];
 			info->top_index_a++;
 			info->size_a++;
