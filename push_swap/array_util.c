@@ -6,12 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/24 16:02:00 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 18:27:23 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
 
 int	get_str_size(int argc, char *argv[])
 {
@@ -27,7 +26,7 @@ int	get_str_size(int argc, char *argv[])
 		j = 0;
 		arr = ft_split(argv[i], ' ');
 		if (!arr)
-			exit (1);
+			exit(1);
 		while (arr[j])
 		{
 			len++;
@@ -46,6 +45,8 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 	char	**arr;
 	int		tmp;
 
+	if (array_size <= 0)
+		print_error();
 	i = array_size - 1;
 	argv++;
 	while (i >= 0)
@@ -58,7 +59,7 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 		while (arr[j])
 		{
 			tmp = ft_atoi(arr[j++]);
-			check_duplicate(info->array, array_size, tmp);
+			check_duplicate(info, info->array, array_size, tmp);
 			info->array[i] = tmp;
 			info->stack_a[i] = info->array[i];
 			info->top_index_a++;
@@ -111,4 +112,20 @@ void	binary_search(t_info *info, int index, int low, int high)
 		return (binary_search(info, index, low, mid - 1));
 	else
 		return (binary_search(info, index, mid + 1, high));
+}
+
+void	check_sorted(t_info *info, int array_size)
+{
+	int	i;
+
+	i = 0;
+	if (array_size < 2)
+		exit(0);
+	while (i < array_size - 1)
+	{
+		if (info->array[i] < info->array[i + 1])
+			return ;
+		i++;
+	}
+	exit(0);
 }

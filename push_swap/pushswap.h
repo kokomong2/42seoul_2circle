@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/24 15:31:09 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 17:54:07 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 typedef struct s_info
 {
 	int	*array;
+	// int	array_size;
 	int	*stack_a;
 	int	size_a;
-	int bottom_index_a;
+	int	bottom_index_a;
 	int	top_index_a;
 	int	*stack_b;
 	int	size_b;
-	int bottom_index_b;
+	int	bottom_index_b;
 	int	top_index_b;
+	int	have_zero;
 }		t_info;
 
 void	ft_swap_a(t_info *info);
@@ -52,8 +54,10 @@ void	ft_rotate_a(t_info *info, int a);
 void	ft_rotate_b(t_info *info, int b);
 int		ft_abs(int a);
 void	greedy(t_info *info);
-void	check_duplicate(int *array, int array_size, int check);
-
+void	check_duplicate(t_info *info, int *array, int array_size, int check);
+void	sort_three(t_info *info);
+void	check_sorted(t_info *info, int array_size);
+void	sort_short(t_info *info);
 
 // test
 #include <stdio.h>

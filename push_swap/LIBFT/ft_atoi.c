@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:41:33 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/24 15:59:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 16:24:18 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_atoi(const char *str)
 			sign = -1;
 		i++;
 	}
+	if (str[i] < '0' || str[i] > '9')
+			print_error();
 	return (getres(res, sign, str, i));
 }
 

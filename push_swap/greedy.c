@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:59:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/21 17:37:21 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 19:01:40 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	get_min_rotate(t_info *info, int *a, int *b)
 			b_location = (info->size_b - index) * -1;
 		else
 			b_location = index;
-		// printf("num : %d, index : %d, ra : %d, rb : %d\n",num, index, a_location, b_location);
 		if (index == 0 || ft_get_bigger(*a, *b, a_location, b_location))
 		{
 			*a = a_location;
@@ -93,8 +92,9 @@ void	sort_last(t_info *info)
 			min = index;
 	}
 	min++;
-	while (min--)
-		ft_rra(info);
+	if (min != info->top_index_a)
+		while (min--)
+			ft_rra(info);
 }
 
 void	greedy(t_info *info)
@@ -108,7 +108,6 @@ void	greedy(t_info *info)
 		a = 0;
 		b = 0;
 		get_min_rotate(info, &a, &b);
-		// printf("ra: %d, rb: %d\n",a, b);
 		ft_rotate_same(info, &a, &b);
 		ft_rotate_a(info,a);
 		ft_rotate_b(info,b);

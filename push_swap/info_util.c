@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:29:10 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/20 20:01:18 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 17:54:24 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_info	*ft_info_new(int size)
 	new->size_a = 0;
 	new->bottom_index_b = 0;
 	new->top_index_b = 0;
+	new->have_zero = 0;
+	// new->array_size = size;
 	//malloc실패를 한번에 처리하는것인데 만약 잘못될경우 수정
 	if (!new || !new->array || !new->stack_a || !new->stack_b)
 		exit(1);

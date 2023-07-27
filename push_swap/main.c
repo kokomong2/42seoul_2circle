@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:05:00 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/24 16:03:50 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 18:59:10 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,22 @@ int	main(int argc, char *argv[])
 	int		array_size;
 	t_info	*info;
 
-	(void)argv;
 	if (argc < 2)
-		print_error();
+		return (0);
 	array_size = get_str_size(argc, argv);
-	info = ft_info_new(array_size);
+	info = ft_info_new(array_size);	
 	ft_argv_to_array(argv, array_size, info);
+	check_sorted(info, array_size);
 	array_sort(info, array_size);
+	// print_array(info, array_size);
 	indexing_stack_a(info);
-	get_pivot(info, array_size);
+	if (array_size < 10)
+		sort_short(info);
+	else
+		get_pivot(info, array_size);
+	sort_three(info);
 	greedy(info);
+	// print_stack(info);
 	return (0);
 }
 

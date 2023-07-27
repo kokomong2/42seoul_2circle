@@ -6,13 +6,13 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:59:27 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/21 16:21:37 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 18:05:25 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	sort_rest(t_info *info)
+void	sort_three(t_info *info)
 {
 	int	top;
 	int	mid;
@@ -61,6 +61,5 @@ void	get_pivot(t_info *info, int array_size)
 	}
 	while (info->size_a > 3)
 		ft_push_b(info);
-	sort_rest(info);
 }
 
