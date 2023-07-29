@@ -6,11 +6,21 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 21:00:12 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 16:29:57 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:27:12 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	ft_twist_half(int *a_location, int *b_location, int size_a, int size_b)
+{
+	if (*a_location < (size_a / 2))
+		*a_location = -(*a_location + 1);
+	else
+		*a_location = size_a - (*a_location + 1);
+	if (*b_location >= (size_b + 1) / 2)
+		*b_location = (size_b - *b_location) * -1;
+}
 
 void	ft_rotate_same(t_info *info, int *a, int *b)
 {

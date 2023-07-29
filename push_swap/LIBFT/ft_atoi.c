@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:41:33 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/27 16:24:18 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:32:30 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_atoi(const char *str)
 	res = 0;
 	sign = 1;
 	i = 0;
-
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -31,7 +30,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (str[i] < '0' || str[i] > '9')
-			print_error();
+		print_error();
 	return (getres(res, sign, str, i));
 }
 

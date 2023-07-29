@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 16:15:41 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:33:54 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 typedef struct s_info
 {
 	int	*array;
-	// int	array_size;
 	int	*stack_a;
 	int	size_a;
 	int	bottom_index_a;
@@ -30,9 +29,9 @@ typedef struct s_info
 
 void	ft_swap_a(t_info *info);
 t_info	*ft_info_new(int size);
-void 	print_error();
+void	print_error(void);
 int		get_str_size(int argc, char *argv[]);
-void	ft_argv_to_array(char *argv[], int array_size, t_info	*info);
+void	ft_argv_to_array(char *argv[], int array_size, t_info *info);
 void	ft_ss(t_info *info);
 void	ft_push_a(t_info *info);
 void	ft_push_b(t_info *info);
@@ -56,5 +55,6 @@ void	check_duplicate(t_info *info, int *array, int array_size, int check);
 void	sort_three(t_info *info);
 void	check_sorted(t_info *info, int array_size);
 void	sort_short(t_info *info);
+void	ft_twist_half(int *a_location, int *b_location, int size_a, int size_b);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:30:28 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 16:32:46 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:34:08 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	print_error()
+void	print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);

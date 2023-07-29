@@ -6,39 +6,35 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:59:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 16:30:20 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:29:14 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int	set_a_location(int num, t_info *info)
+int	set_a_location(int num, int *stack_a, int size_a)
 {
 	int	index;
 	int	res;
 	int	now;
 
-	index = info->size_a;
+	index = size_a;
 	res = index;
 	while (index--)
 	{
-		now = info->stack_a[index];
+		now = stack_a[index];
 		if (num < now)
-			if (res == info->size_a || info->stack_a[res] > now)
+			if (res == size_a || stack_a[res] > now)
 				res = index;
 	}
-	index = info->size_a;
+	index = size_a;
 	if (res == index)
 	{
 		res = index - 1;
 		while (index--)
-			if (info->stack_a[res] > info->stack_a[index])
+			if (stack_a[res] > stack_a[index])
 				res = index;
 	}
-	if (res < (info->size_a / 2))
-		res = -(res + 1);
-	else
-		res = info->size_a - (res + 1);
 	return (res);
 }
 
@@ -67,11 +63,9 @@ void	get_min_rotate(t_info *info, int *a, int *b)
 	while (index < info->size_b)
 	{
 		num = info->stack_b[top];
-		a_location = set_a_location(num, info);
-		if (index >= (info->size_b + 1) / 2)
-			b_location = (info->size_b - index) * -1;
-		else
-			b_location = index;
+		a_location = set_a_location(num, info->stack_a, info->size_a);
+		b_location = index;
+		ft_twist_half(&a_location, &b_location, info->size_a, info->size_b);
 		if (index == 0 || ft_get_bigger(*a, *b, a_location, b_location))
 		{
 			*a = a_location;

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 17:02:17 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:08:22 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 	if (array_size <= 0)
 		print_error();
 	i = array_size - 1;
-	argv++;
 	while (i >= 0)
 	{
 		j = 0;
