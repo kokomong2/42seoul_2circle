@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/29 14:31:39 by sgo               #+#    #+#              #
-#    Updated: 2023/07/27 15:45:42 by sgo              ###   ########.fr        #
+#    Updated: 2023/07/29 17:48:28 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
-
-#debug
-debug	: fclean #이전에 만들어놓은 목적파일과 a파일 out파일 등을 삭제한다.
-	gcc -g ${SRCS}
-	lldb a.out "    9"
 
 clean:
 	$(RM) $(OBJS)
