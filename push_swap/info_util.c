@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:29:10 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 17:02:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:39:29 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_info	*ft_info_new(int size)
 	t_info	*new;
 
 	new = (t_info *)malloc(sizeof(t_info));
+	if (!new)
+		exit(1);
 	new->array = (int *)malloc(sizeof(int) * size);
 	new->stack_a = (int *)malloc(sizeof(int) * size);
 	new->size_a = size;
@@ -25,8 +27,7 @@ t_info	*ft_info_new(int size)
 	new->bottom_index_b = 0;
 	new->size_b = 0;
 	new->have_zero = 0;
-	//malloc실패를 한번에 처리하는것인데 만약 잘못될경우 수정
-	if (!new || !new->array || !new->stack_a || !new->stack_b)
+	if (!new->array || !new->stack_a || !new->stack_b)
 		exit(1);
 	return (new);
 }
