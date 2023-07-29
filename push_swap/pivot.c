@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 17:59:27 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/27 18:05:25 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 16:30:59 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	sort_three(t_info *info)
 		ft_rra(info);
 }
 
-
 void	get_pivot(t_info *info, int array_size)
 {
 	int	upivot;
@@ -49,12 +48,12 @@ void	get_pivot(t_info *info, int array_size)
 	dpivot = array_size / 3;
 	while (array_size--)
 	{
-		if (info->stack_a[info->top_index_a - 1] < dpivot)
+		if (info->stack_a[info->size_a - 1] < dpivot)
 		{
 			ft_push_b(info);
 			ft_rb(info);
 		}
-		else if (info->stack_a[info->top_index_a - 1] < upivot)
+		else if (info->stack_a[info->size_a - 1] < upivot)
 			ft_push_b(info);
 		else
 			ft_ra(info);
@@ -62,4 +61,3 @@ void	get_pivot(t_info *info, int array_size)
 	while (info->size_a > 3)
 		ft_push_b(info);
 }
-

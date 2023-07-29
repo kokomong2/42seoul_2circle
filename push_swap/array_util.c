@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/27 18:27:23 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 17:02:17 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	ft_argv_to_array(char *argv[], int array_size, t_info *info)
 			check_duplicate(info, info->array, array_size, tmp);
 			info->array[i] = tmp;
 			info->stack_a[i] = info->array[i];
-			info->top_index_a++;
-			info->size_a++;
 			i--;
 		}
 		freeresult(j, arr);

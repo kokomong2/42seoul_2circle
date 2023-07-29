@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/27 17:54:07 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 16:15:41 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ typedef struct s_info
 	int	*stack_a;
 	int	size_a;
 	int	bottom_index_a;
-	int	top_index_a;
 	int	*stack_b;
 	int	size_b;
 	int	bottom_index_b;
-	int	top_index_b;
 	int	have_zero;
 }		t_info;
 
@@ -59,9 +57,4 @@ void	sort_three(t_info *info);
 void	check_sorted(t_info *info, int array_size);
 void	sort_short(t_info *info);
 
-// test
-#include <stdio.h>
-void print_stack(t_info *info);
-void print_array(t_info *info, int array_size);
-//test
 #endif
