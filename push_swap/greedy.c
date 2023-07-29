@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 19:59:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/27 19:01:40 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/27 20:38:12 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ int	set_a_location(int num, t_info *info)
 	}
 	index = info->top_index_a;
 	if (res == index)
+	{
+		res = index - 1;
 		while (index--)
 			if (info->stack_a[res] > info->stack_a[index])
 				res = index;
+	}
 	if (res < (info->size_a / 2))
 		res = -(res + 1);
 	else
