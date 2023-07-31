@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 14:29:24 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 20:45:59 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 16:06:08 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define PUSHSWAP_H
 
 # include "./LIBFT/libft.h"
-// tester
-# include <stdio.h>
+
 typedef struct s_info
 {
 	int	*array;

@@ -6,24 +6,17 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:05:00 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 20:48:44 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 16:09:06 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-void	foo(void)
-{
-	system("leaks pushswap");
-}
-
 
 int	main(int argc, char *argv[])
 {
 	int		array_size;
 	t_info	*info;
 
-	// atexit(foo);
 	if (argc < 2)
 		return (0);
 	array_size = get_str_size(argc, argv);
