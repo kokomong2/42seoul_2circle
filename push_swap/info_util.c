@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:29:10 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 17:39:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 20:09:39 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ t_info	*ft_info_new(int size)
 	if (!new->array || !new->stack_a || !new->stack_b)
 		exit(1);
 	return (new);
+}
+
+void	free_info(t_info *info)
+{
+	free(info->array);
+	info->array = NULL;
+	free(info->stack_a);
+	info->array = NULL;
+	free(info->stack_b);
+	info->array = NULL;
 }

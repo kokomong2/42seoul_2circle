@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 16:49:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 17:08:22 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 20:41:52 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	get_str_size(int argc, char *argv[])
 	while (i < argc)
 	{
 		j = 0;
+		if (is_all_blank(argv[i]))
+			print_error();
 		arr = ft_split(argv[i], ' ');
 		if (!arr)
 			exit(1);

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 15:30:28 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 17:34:08 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/29 20:47:21 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ void	check_duplicate(t_info *info, int *array, int array_size, int check)
 			print_error();
 		i++;
 	}
+}
+
+int	is_all_blank(char *str)
+{
+	int	isblank;
+
+	isblank = 1;
+	while (*str)
+	{
+		if (*str != ' ')
+			isblank = 0;
+		str++;
+	}
+	return (isblank);
 }
