@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:26:38 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:44:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:57:32 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "solong.h"
+#include "solong.h"
 
 static void	move_left(t_game *game, int x, int y);
 static void	move_right(t_game *game, int x, int y);
@@ -80,7 +80,7 @@ static void	move_right(t_game *game, int x, int y)
 	game->map->line[x + 1] = 'P';
 	game->map->line[x] = '0';
 	game->player->x++;
-	game->player->move_cnt++; 
+	game->player->move_cnt++;
 }
 
 static void	move_up(t_game *game, int x, int y)
@@ -103,7 +103,7 @@ static void	move_up(t_game *game, int x, int y)
 	game->map->line[x - game->map->map_width] = 'P';
 	game->map->line[x] = '0';
 	game->player->y--;
-	game->player->move_cnt++; 
+	game->player->move_cnt++;
 }
 
 static void	move_down(t_game *game, int x, int y)
@@ -126,5 +126,5 @@ static void	move_down(t_game *game, int x, int y)
 	game->map->line[x + game->map->map_width] = 'P';
 	game->map->line[x] = '0';
 	game->player->y++;
-	game->player->move_cnt++; 
+	game->player->move_cnt++;
 }

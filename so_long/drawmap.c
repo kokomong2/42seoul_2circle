@@ -6,15 +6,14 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 18:04:47 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 15:01:48 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:55:44 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "solong.h"
+#include "solong.h"
 
-void	draw_img(char now, t_game *game,int x, int y)
+void	draw_img(char now, t_game *game, int x, int y)
 {
-	// printf("now : %c\n", now);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->blank, x, y);
 	if (now == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->img->wall, x, y);

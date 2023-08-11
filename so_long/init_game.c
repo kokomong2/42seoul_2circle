@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:38:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:34:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:57:11 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "solong.h"
+#include "solong.h"
 
 static void	read_file(t_game *game, char *file);
 static void	init_map(t_game *game);
@@ -20,7 +20,7 @@ static void	init_img(t_game *game);
 t_game	*init_game(char *file)
 {
 	t_game	*game;
-	
+
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		exit(1);
@@ -37,7 +37,7 @@ t_game	*init_game(char *file)
 static void	read_file(t_game *game, char *file)
 {
 	char	*mapname;
-	
+
 	mapname = ft_strdup(MAP_ROUTE);
 	if (!mapname)
 		exit(1);
@@ -86,5 +86,4 @@ static void	init_img(t_game *game)
 	game->img->collection = mlx_xpm_file_to_image(game->mlx, "./images/coll2.xpm", &game->img->img_wi, &game->img->img_he);
 	game->img->exit = mlx_xpm_file_to_image(game->mlx, "./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
 	game->img->player = mlx_xpm_file_to_image(game->mlx, "./images/char1.xpm", &game->img->img_wi, &game->img->img_he);
-
 }

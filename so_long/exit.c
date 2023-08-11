@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:29:58 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:49:39 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:56:19 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "solong.h"
+#include "solong.h"
 
 int	exit_game(t_game *game)
 {
