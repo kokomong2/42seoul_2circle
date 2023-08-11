@@ -1,0 +1,112 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keypress.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/11 14:26:38 by sgo               #+#    #+#             */
+/*   Updated: 2023/08/11 15:37:59 by sgo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "solong.h"
+
+static void	move_left(t_game *game, int x, int y);
+static void	move_right(t_game *game, int x, int y);
+static void	move_up(t_game *game, int x, int y);
+static void	move_down(t_game *game, int x, int y);
+
+int	key_press(int keycode, t_game *game)
+{
+	printf("keycode : %d\n", keycode);
+	printf("x : %d, y : %d\n", game->player->x, game->player->y);
+	if (keycode == KEY_W)
+		move_up(game, game->player->x, game->player->y);
+	else if (keycode == KEY_S)
+		move_down(game, game->player->x, game->player->y);
+	else if (keycode == KEY_A)
+		move_left(game, game->player->x, game->player->y);
+	else if (keycode == KEY_D)
+		move_right(game, game->player->x, game->player->y);
+	else if (keycode == KEY_ESC)
+		exit(0);
+	drawmap(game);
+	return (0);
+}
+
+static void	move_left(t_game *game, int x, int y)
+{
+	char	*line;
+
+	x = y * game->map->map_width + x;
+	printf("move_left\n");
+	line = game->map->line;
+	if (line[x - 1] == '1')
+		return ;
+	else if(line[x - 1] == 'E')
+		return ;
+	else if (line[x - 1] == 'C')
+		game->map->collect_cnt--;
+	game->map->line[x - 1] = 'P';
+	game->map->line[x] = '0';
+	game->player->x--;
+	game->player->move_cnt++;
+}
+
+static void	move_right(t_game *game, int x, int y)
+{
+	char	*line;
+
+	x = y * game->map->map_width + x;
+	printf("move_right\n");
+	line = game->map->line;
+	if (line[x + 1] == '1')
+		return ;
+	else if(line[x + 1] == 'E')
+		return ;
+	else if (line[x + 1] == 'C')
+		game->map->collect_cnt--;
+	game->map->line[x + 1] = 'P';
+	game->map->line[x] = '0';
+	game->player->x++;
+	game->player->move_cnt++; 
+}
+
+static void	move_up(t_game *game, int x, int y)
+{
+	char	*line;
+
+	x = y * game->map->map_width + x;
+	printf("move_up\n");
+	line = game->map->line;
+	if (line[x - game->map->map_width] == '1')
+		return ;
+	else if(line[x - game->map->map_width] == 'E')
+		return ;
+	else if (line[x - game->map->map_width] == 'C')
+		game->map->collect_cnt--;
+	game->map->line[x - game->map->map_width] = 'P';
+	game->map->line[x] = '0';
+	game->player->y--;
+	game->player->move_cnt++; 
+}
+
+static void	move_down(t_game *game, int x, int y)
+{
+	char	*line;
+
+	x = y * game->map->map_width + x;
+	printf("move_down\n");
+	line = game->map->line;
+	if (line[x + game->map->map_width] == '1')
+		return ;
+	else if(line[x + game->map->map_width] == 'E')
+		return ;
+	else if (line[x + game->map->map_width] == 'C')
+		game->map->collect_cnt--;
+	game->map->line[x + game->map->map_width] = 'P';
+	game->map->line[x] = '0';
+	game->player->y++;
+	game->player->move_cnt++; 
+}
