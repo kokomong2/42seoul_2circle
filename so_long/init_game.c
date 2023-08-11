@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:38:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:17:46 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:34:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static void	init_map(t_game *game)
 	game->map->map_height = 0;
 	game->map->map_width = 0;
 	game->map->collect_cnt = 0;
+	game->map->exit_cnt = 0;
+	game->map->player_cnt = 0;
 }
 
 static void	init_player(t_game *game)

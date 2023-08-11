@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:53:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:33:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 18:41:43 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 typedef struct s_map
 {
 	char		*line;
+	int			player_cnt;
+	int			exit_cnt;
 	int			collect_cnt;
 	int			win_height;
 	int			win_width;
@@ -78,10 +80,12 @@ int		copymap(t_game *game);
 
 void	exit_error_free(t_game *game, char *msg);
 void	exit_error(char *msg);
-void	check_map(t_game *game);
+void	count_map(t_game *game);
+void	check_map(t_game *game, int len);
+void	check_wall(t_game *game);
 void	drawmap(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	free_game(t_game *game);
-int	exit_game(t_game *game);
+int		exit_game(t_game *game);
 
 #endif
