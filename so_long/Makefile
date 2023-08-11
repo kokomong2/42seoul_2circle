@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 12:41:53 by sgo               #+#    #+#              #
-#    Updated: 2023/08/11 15:36:01 by sgo              ###   ########.fr        #
+#    Updated: 2023/08/11 17:31:09 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ MLX_DIR = ./mlx/
 GL_LINK = -I $(MLX) -L $(MLX) -lmlx -framework OpenGl -framework AppKit
 RM = rm -f
 SRCS = main.c init_game.c copymap.c validation.c drawmap.c keypress.c \
-free_game.c \
+free_game.c exit.c\
 GNL/get_next_line.c GNL/get_next_line_utils.c
 OBJS = $(SRCS:.c=.o)
 

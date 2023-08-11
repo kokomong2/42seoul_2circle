@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:53:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 17:09:51 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:33:52 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define X_EVENT_KEY_PRESS			2
 # define X_EVENT_KEY_RELEASE		3
+# define X_EVENT_KEY_EXIT			17
 
 # define KEY_ESC		53
 # define KEY_W			13
@@ -81,5 +82,6 @@ void	check_map(t_game *game);
 void	drawmap(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	free_game(t_game *game);
+int	exit_game(t_game *game);
 
 #endif

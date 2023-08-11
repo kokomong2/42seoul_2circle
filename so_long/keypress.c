@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:26:38 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 15:37:59 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/11 17:44:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void	move_down(t_game *game, int x, int y);
 
 int	key_press(int keycode, t_game *game)
 {
-	printf("keycode : %d\n", keycode);
 	printf("x : %d, y : %d\n", game->player->x, game->player->y);
+	printf("move : %d\n", game->player->move_cnt);
+	printf("col_cnt : %d\n", game->map->collect_cnt);
+	printf("=============\n");
 	if (keycode == KEY_W)
 		move_up(game, game->player->x, game->player->y);
 	else if (keycode == KEY_S)
@@ -30,7 +32,7 @@ int	key_press(int keycode, t_game *game)
 	else if (keycode == KEY_D)
 		move_right(game, game->player->x, game->player->y);
 	else if (keycode == KEY_ESC)
-		exit(0);
+		exit_game(game);
 	drawmap(game);
 	return (0);
 }
@@ -44,10 +46,14 @@ static void	move_left(t_game *game, int x, int y)
 	line = game->map->line;
 	if (line[x - 1] == '1')
 		return ;
-	else if(line[x - 1] == 'E')
-		return ;
 	else if (line[x - 1] == 'C')
 		game->map->collect_cnt--;
+	else if (line[x - 1] == 'E')
+	{
+		if (game->map->collect_cnt == 0)
+			exit_game(game);
+		return ;
+	}
 	game->map->line[x - 1] = 'P';
 	game->map->line[x] = '0';
 	game->player->x--;
@@ -63,10 +69,14 @@ static void	move_right(t_game *game, int x, int y)
 	line = game->map->line;
 	if (line[x + 1] == '1')
 		return ;
-	else if(line[x + 1] == 'E')
-		return ;
 	else if (line[x + 1] == 'C')
 		game->map->collect_cnt--;
+	else if (line[x + 1] == 'E')
+	{
+		if (game->map->collect_cnt == 0)
+			exit_game(game);
+		return ;
+	}
 	game->map->line[x + 1] = 'P';
 	game->map->line[x] = '0';
 	game->player->x++;
@@ -82,10 +92,14 @@ static void	move_up(t_game *game, int x, int y)
 	line = game->map->line;
 	if (line[x - game->map->map_width] == '1')
 		return ;
-	else if(line[x - game->map->map_width] == 'E')
-		return ;
 	else if (line[x - game->map->map_width] == 'C')
 		game->map->collect_cnt--;
+	else if (line[x - game->map->map_width] == 'E')
+	{
+		if (game->map->collect_cnt == 0)
+			exit_game(game);
+		return ;
+	}
 	game->map->line[x - game->map->map_width] = 'P';
 	game->map->line[x] = '0';
 	game->player->y--;
@@ -101,10 +115,14 @@ static void	move_down(t_game *game, int x, int y)
 	line = game->map->line;
 	if (line[x + game->map->map_width] == '1')
 		return ;
-	else if(line[x + game->map->map_width] == 'E')
-		return ;
 	else if (line[x + game->map->map_width] == 'C')
 		game->map->collect_cnt--;
+	else if (line[x + game->map->map_width] == 'E')
+	{
+		if (game->map->collect_cnt == 0)
+			exit_game(game);
+		return ;
+	}
 	game->map->line[x + game->map->map_width] = 'P';
 	game->map->line[x] = '0';
 	game->player->y++;
