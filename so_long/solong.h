@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:53:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:41:43 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/17 15:56:31 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@
 # define MAP_ROUTE "./maps/"
 
 # define MAP_ERR_MSG "맵이 유효하지 않습니다."
+# define MAP_REC_ERR "맵이 직사각형이 아닙니다"
+# define MAP_DUP_ERR "플레이어 혹은 출구가 하나가 아닙니다."
+# define MAP_WALL_ERR "맵이 벽으로 둘러쌓여있지 않습니다."
+# define MAP_CANT_EXIT "플레이어가 나가는 조건을 만족할수 없습니다."
 # define ARG_ERR_MSG "입력값이 하나가 아닙니다."
 # define FILENAME_ERR_MSG "존재하는 파일명이 아닙니다."
 
@@ -40,10 +44,10 @@ typedef struct s_map
 	int			player_cnt;
 	int			exit_cnt;
 	int			collect_cnt;
-	int			win_height;
-	int			win_width;
-	int			map_height;
-	int			map_width;
+	int			win_hei;
+	int			win_wid;
+	int			hei;
+	int			wid;
 }				t_map;
 
 typedef struct s_player
@@ -59,7 +63,7 @@ typedef struct s_img
 	int			img_he;
 	void		*blank;
 	void		*wall;
-	void		*collection;
+	void		*col;
 	void		*exit;
 	void		*player;
 }				t_img;
@@ -75,6 +79,12 @@ typedef struct s_game
 	t_img		*img;
 }				t_game;
 
+typedef struct s_xy
+{
+	int			x;
+	int			y;
+}				t_xy;
+
 t_game	*init_game(char *file);
 int		copymap(t_game *game);
 
@@ -87,5 +97,6 @@ void	drawmap(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	free_game(t_game *game);
 int		exit_game(t_game *game);
+void	check_dfs(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:28:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:23:48 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/14 19:04:59 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	free_img(t_game *game)
 	game->img->blank = NULL;
 	free(game->img->wall);
 	game->img->wall = NULL;
-	free(game->img->collection);
-	game->img->collection = NULL;
+	free(game->img->col);
+	game->img->col = NULL;
 	free(game->img->exit);
 	game->img->exit = NULL;
 	free(game->img->player);

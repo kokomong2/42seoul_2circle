@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:40:17 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:37:14 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/14 20:26:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char *argv[])
 	copymap(game);
 	count_map(game);
 	check_wall(game);
+	check_dfs(game);
 	drawmap(game);
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, &key_press, game);
 	mlx_hook(game->win, X_EVENT_KEY_EXIT, 0, &exit_game, game);

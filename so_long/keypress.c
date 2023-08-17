@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:26:38 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:57:32 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/14 19:13:44 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	move_left(t_game *game, int x, int y)
 {
 	char	*line;
 
-	x = y * game->map->map_width + x;
+	x = y * game->map->wid + x;
 	printf("move_left\n");
 	line = game->map->line;
 	if (line[x - 1] == '1')
@@ -64,7 +64,7 @@ static void	move_right(t_game *game, int x, int y)
 {
 	char	*line;
 
-	x = y * game->map->map_width + x;
+	x = y * game->map->wid + x;
 	printf("move_right\n");
 	line = game->map->line;
 	if (line[x + 1] == '1')
@@ -87,20 +87,20 @@ static void	move_up(t_game *game, int x, int y)
 {
 	char	*line;
 
-	x = y * game->map->map_width + x;
+	x = y * game->map->wid + x;
 	printf("move_up\n");
 	line = game->map->line;
-	if (line[x - game->map->map_width] == '1')
+	if (line[x - game->map->wid] == '1')
 		return ;
-	else if (line[x - game->map->map_width] == 'C')
+	else if (line[x - game->map->wid] == 'C')
 		game->map->collect_cnt--;
-	else if (line[x - game->map->map_width] == 'E')
+	else if (line[x - game->map->wid] == 'E')
 	{
 		if (game->map->collect_cnt == 0)
 			exit_game(game);
 		return ;
 	}
-	game->map->line[x - game->map->map_width] = 'P';
+	game->map->line[x - game->map->wid] = 'P';
 	game->map->line[x] = '0';
 	game->player->y--;
 	game->player->move_cnt++;
@@ -110,20 +110,20 @@ static void	move_down(t_game *game, int x, int y)
 {
 	char	*line;
 
-	x = y * game->map->map_width + x;
+	x = y * game->map->wid + x;
 	printf("move_down\n");
 	line = game->map->line;
-	if (line[x + game->map->map_width] == '1')
+	if (line[x + game->map->wid] == '1')
 		return ;
-	else if (line[x + game->map->map_width] == 'C')
+	else if (line[x + game->map->wid] == 'C')
 		game->map->collect_cnt--;
-	else if (line[x + game->map->map_width] == 'E')
+	else if (line[x + game->map->wid] == 'E')
 	{
 		if (game->map->collect_cnt == 0)
 			exit_game(game);
 		return ;
 	}
-	game->map->line[x + game->map->map_width] = 'P';
+	game->map->line[x + game->map->wid] = 'P';
 	game->map->line[x] = '0';
 	game->player->y++;
 	game->player->move_cnt++;

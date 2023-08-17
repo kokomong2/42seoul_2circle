@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:38:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:57:11 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/14 19:13:44 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ static void	init_map(t_game *game)
 	if (!game->map)
 		exit(1);
 	game->map->line = NULL;
-	game->map->win_height = 0;
-	game->map->win_width = 0;
-	game->map->map_height = 0;
-	game->map->map_width = 0;
+	game->map->win_hei = 0;
+	game->map->win_wid = 0;
+	game->map->hei = 0;
+	game->map->wid = 0;
 	game->map->collect_cnt = 0;
 	game->map->exit_cnt = 0;
 	game->map->player_cnt = 0;
@@ -81,9 +81,14 @@ static void	init_img(t_game *game)
 	game->img = (t_img *)malloc(sizeof(t_img));
 	if (!game->img)
 		exit(1);
-	game->img->blank = mlx_xpm_file_to_image(game->mlx, "./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
-	game->img->wall = mlx_xpm_file_to_image(game->mlx, "./images/wall_tile.xpm", &game->img->img_wi, &game->img->img_he);
-	game->img->collection = mlx_xpm_file_to_image(game->mlx, "./images/coll2.xpm", &game->img->img_wi, &game->img->img_he);
-	game->img->exit = mlx_xpm_file_to_image(game->mlx, "./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
-	game->img->player = mlx_xpm_file_to_image(game->mlx, "./images/char1.xpm", &game->img->img_wi, &game->img->img_he);
+	game->img->blank = mlx_xpm_file_to_image(game->mlx, \
+	"./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
+	game->img->wall = mlx_xpm_file_to_image(game->mlx, \
+	"./images/wall_tile.xpm", &game->img->img_wi, &game->img->img_he);
+	game->img->col = mlx_xpm_file_to_image(game->mlx, \
+	"./images/coll2.xpm", &game->img->img_wi, &game->img->img_he);
+	game->img->exit = mlx_xpm_file_to_image(game->mlx, \
+	"./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
+	game->img->player = mlx_xpm_file_to_image(game->mlx, \
+	"./images/char1.xpm", &game->img->img_wi, &game->img->img_he);
 }
