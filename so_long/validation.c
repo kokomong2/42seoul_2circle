@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:31:43 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 17:16:09 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:34:01 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	exit_error_free(t_game *game, char *msg)
 {
-	write(2, "Error\n", 6);
-	ft_putstr_fd(msg, 2);
-	write(2, "\n", 1);
 	free_game(game);
+	exit_error(msg);
 	exit(1);
 }
 

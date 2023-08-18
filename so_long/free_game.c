@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:28:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 16:19:26 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:31:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	free_game(t_game *game)
 	free_map(game);
 	ft_free(game->player);
 	free_img(game);
-	mlx_destroy_window(game->mlx, game->win);
 }
 
 void	free_map(t_game *game)
