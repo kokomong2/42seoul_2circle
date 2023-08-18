@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 12:28:04 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 16:37:23 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:15:45 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ char	*ft_strdup(const char *s1)
 	return (start);
 }
 
-void	ft_putstr_fd(char *s)
+void	ft_putstr_fd(char *s, int fd)
 {
 	while (*s)
 	{
-		write(1, s, 1);
+		write(fd, s, 1);
 		s++;
 	}
 }

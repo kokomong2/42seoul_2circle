@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 14:26:38 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 13:18:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:17:31 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static void	move_down(t_game *game, int x, int y);
 
 int	key_press(int keycode, t_game *game)
 {
-	printf("x : %d, y : %d\n", game->player->x, game->player->y);
-	printf("move : %d\n", game->player->move_cnt);
+	write_num(game->player->move_cnt);
 	if (keycode == KEY_W)
 		move_up(game, game->player->x, game->player->y);
 	else if (keycode == KEY_S)

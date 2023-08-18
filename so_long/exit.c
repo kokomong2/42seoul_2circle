@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 17:29:58 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/11 18:56:19 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 16:21:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	exit_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->win);
+	free_game(game);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:38:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/17 19:38:10 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 16:24:53 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_game	*init_game(char *file)
 	init_map(game);
 	game->win = NULL;
 	game->mlx = mlx_init();
+	if (!game->mlx)
+		exit(1);
 	game->bit = 32;
 	init_player(game);
 	init_img(game);
@@ -45,10 +47,10 @@ static void	read_file(t_game *game, char *file)
 	if (!mapname)
 		exit(1);
 	game->fd = open(mapname, O_RDONLY);
-	if (game->fd <= 0)
-		exit_error(FILENAME_ERR_MSG);
 	free(mapname);
 	mapname = NULL;
+	if (game->fd <= 0)
+		exit_error(FILENAME_ERR_MSG);
 }
 
 static void	init_map(t_game *game)
@@ -70,7 +72,10 @@ static void	init_player(t_game *game)
 {
 	game->player = (t_player *)malloc(sizeof(t_player));
 	if (!game->player)
+	{
+		ft_free(game->map);
 		exit(1);
+	}
 	game->player->x = 0;
 	game->player->y = 0;
 	game->player->move_cnt = 0;
@@ -80,7 +85,11 @@ static void	init_img(t_game *game)
 {
 	game->img = (t_img *)malloc(sizeof(t_img));
 	if (!game->img)
+	{
+		ft_free(game->map);
+		ft_free(game->player);
 		exit(1);
+	}
 	game->img->blank = mlx_xpm_file_to_image(game->mlx, \
 	"./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
 	game->img->wall = mlx_xpm_file_to_image(game->mlx, \

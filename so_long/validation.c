@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:31:43 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 14:31:59 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:16:09 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	exit_error_free(t_game *game, char *msg)
 {
 	write(2, "Error\n", 6);
-	ft_putstr_fd(msg);
-	write(1, "\n", 1);
+	ft_putstr_fd(msg, 2);
+	write(2, "\n", 1);
 	free_game(game);
 	exit(1);
 }
@@ -24,8 +24,8 @@ void	exit_error_free(t_game *game, char *msg)
 void	exit_error(char *msg)
 {
 	write(2, "Error\n", 6);
-	ft_putstr_fd(msg);
-	write(1, "\n", 1);
+	ft_putstr_fd(msg, 2);
+	write(2, "\n", 1);
 	exit(1);
 }
 
@@ -39,7 +39,7 @@ void	count_map(t_game *game)
 	{
 		c = game->map->line[i];
 		if (!(c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P'))
-			exit_error_free(game, "다른 문자가 있음");
+			exit_error_free(game, MAP_ERR_MSG);
 		if (c == 'C')
 			game->map->collect_cnt++;
 		if (c == 'P')

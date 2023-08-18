@@ -6,13 +6,14 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:06:16 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 14:31:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 17:20:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
 static void	move_xy(t_xy *xy, int dx, int dy, int i);
+static t_xy	*get_start_xy(t_game *game, int *visited);
 
 void	dfs(t_game *game, int *visited, int *cnt, t_xy *xy)
 {
@@ -76,12 +77,9 @@ void	check_dfs(t_game *game)
 	cnt = 0;
 	len = get_strlen(game->map->line);
 	visited = (int *)malloc(sizeof(int) * len);
-	xy = (t_xy *)malloc(sizeof(t_xy));
-	xy->x = game->player->x;
-	xy->y = game->player->y;
-	xy->is_exit = 0;
-	if (!visited || !xy)
-		exit(1);
+	if (!visited)
+		exit_error_free(game, MALLOC_ERR);
+	xy = get_start_xy(game, visited);
 	while (i < len)
 		visited[i++] = 0;
 	visited[xy->y * game->map->wid + xy->x] = 1;
@@ -93,10 +91,18 @@ void	check_dfs(t_game *game)
 		exit_error_free(game, MAP_CANT_EXIT);
 }
 
-void	get_start_xy(t_xy *xy, t_game *game)
+static t_xy	*get_start_xy(t_game *game, int *visited)
 {
+	t_xy	*xy;
+
 	xy = (t_xy *)malloc(sizeof(t_xy));
 	xy->x = game->player->x;
 	xy->y = game->player->y;
 	xy->is_exit = 0;
+	if (!xy)
+	{
+		ft_free(visited);
+		exit_error_free(game, MALLOC_ERR);
+	}
+	return (xy);
 }
