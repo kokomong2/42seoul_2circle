@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:31:43 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/14 19:26:07 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 14:31:59 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	exit_error_free(t_game *game, char *msg)
 {
 	write(2, "Error\n", 6);
-	free_game(game);
 	ft_putstr_fd(msg);
 	write(1, "\n", 1);
+	free_game(game);
 	exit(1);
 }
 
@@ -32,17 +32,17 @@ void	exit_error(char *msg)
 void	count_map(t_game *game)
 {
 	int		i;
-	char	now;
+	char	c;
 
 	i = 0;
 	while (game->map->line[i])
 	{
-		now = game->map->line[i];
-		if (!(now == '0' || now == '1' || now == 'C' || now == 'E' || now == 'P'))
+		c = game->map->line[i];
+		if (!(c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P'))
 			exit_error_free(game, "다른 문자가 있음");
-		if (now == 'C')
+		if (c == 'C')
 			game->map->collect_cnt++;
-		if (now == 'P')
+		if (c == 'P')
 		{
 			if (game->player->x != 0 || game->player->y != 0)
 				exit_error_free(game, MAP_DUP_ERR);
@@ -50,7 +50,7 @@ void	count_map(t_game *game)
 			game->player->y = i / game->map->wid;
 			game->map->player_cnt++;
 		}
-		if (now == 'E')
+		if (c == 'E')
 			game->map->exit_cnt++;
 		i++;
 	}

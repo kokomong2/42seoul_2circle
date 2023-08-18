@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:06:16 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/14 19:20:14 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 14:31:29 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	move_xy(t_xy *xy, int dx, int dy, int i);
 
-int	dfs(t_game *game, int *visited, int cnt, t_xy *xy)
+void	dfs(t_game *game, int *visited, int *cnt, t_xy *xy)
 {
 	int	index;
 	int	dx;
@@ -25,10 +25,10 @@ int	dfs(t_game *game, int *visited, int cnt, t_xy *xy)
 	dy = xy->y;
 	i = 0;
 	index = xy->y * game->map->wid + xy->x;
-	if (game->map->line[index] == 'E' && cnt == 0)
-		return (1);
+	if (game->map->line[index] == 'E')
+		xy->is_exit = 1;
 	if (game->map->line[index] == 'C')
-		cnt--;
+		*cnt = *cnt + 1;
 	while (i < 4)
 	{
 		move_xy(xy, dx, dy, i++);
@@ -36,11 +36,8 @@ int	dfs(t_game *game, int *visited, int cnt, t_xy *xy)
 		if (game->map->line[index] == '1' || visited[index] == 1)
 			continue ;
 		visited[xy->y * game->map->wid + xy->x] = 1;
-		if (dfs(game, visited, cnt, xy))
-			return (1);
-		visited[xy->y * game->map->wid + xy->x] = 0;
+		dfs(game, visited, cnt, xy);
 	}
-	return (0);
 }
 
 static void	move_xy(t_xy *xy, int dx, int dy, int i)
@@ -73,20 +70,33 @@ void	check_dfs(t_game *game)
 	int		len;
 	int		i;
 	t_xy	*xy;
+	int		cnt;
 
 	i = 0;
+	cnt = 0;
 	len = get_strlen(game->map->line);
 	visited = (int *)malloc(sizeof(int) * len);
-	xy = (t_xy *)malloc(sizeof(t_xy) * len);
+	xy = (t_xy *)malloc(sizeof(t_xy));
 	xy->x = game->player->x;
 	xy->y = game->player->y;
+	xy->is_exit = 0;
 	if (!visited || !xy)
 		exit(1);
 	while (i < len)
 		visited[i++] = 0;
 	visited[xy->y * game->map->wid + xy->x] = 1;
-	if (!dfs(game, visited, game->map->collect_cnt, xy))
-		exit_error_free(game, MAP_CANT_EXIT);
+	dfs(game, visited, &cnt, xy);
+	i = xy->is_exit;
 	free(xy);
-	xy = NULL;
+	free(visited);
+	if (cnt != game->map->collect_cnt || i != 1)
+		exit_error_free(game, MAP_CANT_EXIT);
+}
+
+void	get_start_xy(t_xy *xy, t_game *game)
+{
+	xy = (t_xy *)malloc(sizeof(t_xy));
+	xy->x = game->player->x;
+	xy->y = game->player->y;
+	xy->is_exit = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 17:38:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/14 19:13:44 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/17 19:38:10 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	init_img(t_game *game)
 	game->img->col = mlx_xpm_file_to_image(game->mlx, \
 	"./images/coll2.xpm", &game->img->img_wi, &game->img->img_he);
 	game->img->exit = mlx_xpm_file_to_image(game->mlx, \
-	"./images/road_tile2.xpm", &game->img->img_wi, &game->img->img_he);
+	"./images/minihome.xpm", &game->img->img_wi, &game->img->img_he);
 	game->img->player = mlx_xpm_file_to_image(game->mlx, \
 	"./images/char1.xpm", &game->img->img_wi, &game->img->img_he);
 }

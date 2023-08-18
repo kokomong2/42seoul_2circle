@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 12:53:02 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/17 15:56:31 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/17 19:26:05 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_xy
 {
 	int			x;
 	int			y;
+	int			is_exit;
 }				t_xy;
 
 t_game	*init_game(char *file);
@@ -98,5 +99,6 @@ int		key_press(int keycode, t_game *game);
 void	free_game(t_game *game);
 int		exit_game(t_game *game);
 void	check_dfs(t_game *game);
+void	ft_free(void *input);
 
 #endif

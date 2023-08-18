@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:28:21 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/14 19:04:59 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/18 14:14:20 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,33 +19,29 @@ void	free_game(t_game *game)
 {
 	close(game->fd);
 	free_map(game);
-	free(game->player);
-	game->player = NULL;
+	ft_free(game->player);
 	free_img(game);
-	free(game);
-	game = NULL;
+	ft_free(game);
 }
 
 void	free_map(t_game *game)
 {
-	free(game->map->line);
-	game->map->line = NULL;
-	free(game->map);
-	game->map = NULL;
+	ft_free(game->map->line);
+	ft_free(game->map);
 }
 
 void	free_img(t_game *game)
 {
-	free(game->img->blank);
-	game->img->blank = NULL;
-	free(game->img->wall);
-	game->img->wall = NULL;
-	free(game->img->col);
-	game->img->col = NULL;
-	free(game->img->exit);
-	game->img->exit = NULL;
-	free(game->img->player);
-	game->img->player = NULL;
-	free(game->img);
-	game->img = NULL;
+	mlx_destroy_image(game->mlx, game->img->blank);
+	mlx_destroy_image(game->mlx, game->img->wall);
+	mlx_destroy_image(game->mlx, game->img->col);
+	mlx_destroy_image(game->mlx, game->img->exit);
+	mlx_destroy_image(game->mlx, game->img->player);
+	ft_free(game->img);
+}
+
+void	ft_free(void *input)
+{
+	free (input);
+	input = NULL;
 }
