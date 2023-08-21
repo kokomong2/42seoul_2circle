@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:08:19 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/14 19:13:44 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/21 20:54:47 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	copymap(t_game *game)
 	char	*str;
 
 	str = get_next_line(game->fd);
+	if (!str)
+		exit_error_free(game, MAP_ERR_MSG);
 	game->map->wid = get_strlen(str);
 	while (str != NULL)
 	{
