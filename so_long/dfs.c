@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:06:16 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/18 17:20:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/08/21 20:58:14 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	dfs(t_game *game, int *visited, int *cnt, t_xy *xy)
 	i = 0;
 	index = xy->y * game->map->wid + xy->x;
 	if (game->map->line[index] == 'E')
+	{
 		xy->is_exit = 1;
+		return ;
+	}
 	if (game->map->line[index] == 'C')
 		*cnt = *cnt + 1;
 	while (i < 4)
