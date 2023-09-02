@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/29 16:24:48 by sgo               #+#    #+#              #
-#    Updated: 2023/08/31 16:49:04 by sgo              ###   ########.fr        #
+#    Updated: 2023/09/02 19:35:14 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 SRC = 	main.c \
-		path.c cmd.c
+		path.c cmd.c init.c validation.c open.c \
+		child.c
 LIB_NAME = libft.a
 LIB_DIR = ./libft/
 SRC_DIR = ./src/
