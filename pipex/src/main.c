@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:26:29 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/02 20:03:21 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/02 20:16:16 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	main(int argc, char *argv[], char **envp)
 		arg->cmd = get_cmd(arg->path, arg->cmd_args[0]);
 		if (arg->cmd == NULL)
 			exit_error();
-		printf("cmd : %s\n", arg->cmd);
 		get_child(arg, i, argc, envp);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 18:57:47 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/02 20:08:41 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/02 20:16:31 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	get_child(t_arg *arg, int i, int argc, char **envp)
 {
-	printf("get_child\n");
 	arg->pid = fork();
 	if (arg->pid < 0)
 		exit_error();
