@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset copy.c                                   :+:      :+:    :+:   */
+/*   validation_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/13 16:50:53 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Created: 2023/09/17 21:41:04 by sgo               #+#    #+#             */
+/*   Updated: 2023/09/27 17:31:43 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex_bonus.h"
 
-void	*ft_memset(void *ptr, int value, size_t num)
+void	exit_perror(char *msg, t_arg *arg)
 {
-	size_t			i;
-	unsigned char	*temp;
+	free_args(arg);
+	perror(msg);
+	exit(1);
+}
 
-	temp = (unsigned char *)ptr;
-	i = 0;
-	while (i < num)
-		temp[i++] = (unsigned char)value;
-	return (temp);
+void	print_err(char *msg, char *str)
+{
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(str, 2);
+	write(1, "\n", 1);
+}
+
+void	exit_cmd_err(char *msg, char *str)
+{
+	print_err(msg, str);
+	exit(127);
+}
+
+void	exit_free(t_arg *arg)
+{
+	free_args(arg);
+	exit(1);
 }

@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:41:33 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:40 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:05:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 static int	getres(unsigned long res, int sign, const char *str, size_t i);
 

@@ -6,7 +6,7 @@
 #    By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 14:13:27 by sgo               #+#    #+#              #
-#    Updated: 2023/08/29 18:22:44 by sgo              ###   ########.fr        #
+#    Updated: 2023/09/26 21:02:28 by sgo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ AR = ar rcs
 NAME = libft.a
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_itoa.c ft_memset.c \
 		ft_split.c ft_stdup.c ft_strjoin.c ft_strlen.c ft_strncmp.c ft_substr.c \
-		ft_strlcpy.c ft_memset.c ft_memcpy.c
+		ft_strlcpy.c ft_memset.c ft_memcpy.c ft_putstr.c ft_strcmp.c ft_strdup.c
 OBJ_FILES = $(SRCS:%.c=%.o)
 CFLAGS = -Wall -Wextra -Werror
 

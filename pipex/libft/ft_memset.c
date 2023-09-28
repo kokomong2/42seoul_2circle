@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 16:50:53 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:05:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 void	*ft_memset(void *ptr, int value, size_t num)
 {

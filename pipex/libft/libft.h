@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:22:22 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 18:21:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/26 21:28:27 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
-size_t	ft_strlcpy(char *restrict dest, const char *restrict src, size_t size);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 void	*ft_memset(void *ptr, int value, size_t num);
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+void	ft_putstr_fd(char *s, int fd);
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strdup(const char *s1);
 
 #endif

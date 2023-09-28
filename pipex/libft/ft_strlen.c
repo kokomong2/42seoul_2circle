@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:59:18 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/16 21:10:00 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 size_t	ft_strlen(const char *str)
 {

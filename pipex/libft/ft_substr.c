@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:45:59 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:05:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

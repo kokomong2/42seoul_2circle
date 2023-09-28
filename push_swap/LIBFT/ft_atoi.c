@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:41:33 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 20:50:31 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 19:36:08 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	getres(unsigned long res, int sign, const char *str, size_t i)
 		tmp = res;
 		j = 10;
 		res = res * 10 + (str[i] - '0');
-		if (res - 1 > INT_MAX && sign == -1)
+		if (res > (unsigned long)INT_MAX + 1 && sign == -1)
 			print_error();
 		if (res > INT_MAX && sign == 1)
 			print_error();

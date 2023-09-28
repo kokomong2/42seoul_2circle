@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:29:10 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 20:09:39 by sgo              ###   ########.fr       */
+/*   Updated: 2023/07/31 19:14:29 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	free_info(t_info *info)
 	info->array = NULL;
 	free(info->stack_b);
 	info->array = NULL;
+	free(info);
 }

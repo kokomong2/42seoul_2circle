@@ -6,35 +6,69 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 20:22:38 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/31 16:48:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/27 17:31:10 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-char	*get_cmd(char	**path, char *cmd)
+int	check_slash(char *cmd);
+
+char	*get_cmd(char **path, char *cmd)
 {
 	int		index;
-	int		fd;
 	char	*path_cmd;
 	char	*tmp;
 
+	if (cmd == NULL || path == NULL)
+		return (NULL);
 	path_cmd = ft_strjoin("/", cmd);
-	fd = 0;
 	index = 0;
-	while(path[index])
+	while (path[index])
 	{
-		tmp = ft_strjoin(path[index], path_cmd);
-		fd = access(tmp, X_OK);
-		if (fd != -1)
+		if (check_slash(cmd))
+			tmp = ft_strdup(cmd);
+		else
+			tmp = ft_strjoin(path[index], path_cmd);
+		if (access(tmp, X_OK) != -1)
 		{
-			free(path_cmd);
+			free (path_cmd);
 			return (tmp);
 		}
-		close(fd);
-		free(tmp);
+		ft_free(tmp);
 		index++;
 	}
-	free(path_cmd);
+	ft_free(path_cmd);
 	return (NULL);
+}
+
+void	do_cmd(t_arg *arg, int argc, char *argv[], char **envp)
+{
+	int	i;
+
+	i = 2;
+	while (i < argc - 1)
+	{
+		if (pipe(arg->pipe_fd) == -1)
+			exit_perror(ERROR, arg);
+		arg->cmd_args = ft_split(argv[i], ' ');
+		if (arg->cmd_args == NULL)
+			exit_perror(ERROR, arg);
+		arg->pid = fork();
+		if (arg->pid < 0)
+			exit_perror(ERROR, arg);
+		get_child(arg, i, argc, envp);
+		free_double_arr(arg->cmd_args);
+		ft_free(arg->cmd);
+		i++;
+	}
+	free_double_arr(arg->path);
+}
+
+int	check_slash(char *cmd)
+{
+	if (ft_strncmp(cmd, "/", 1) == 0
+		|| ft_strncmp(cmd, "./", 2) == 0 || ft_strncmp(cmd, "../", 3) == 0)
+		return (1);
+	return (0);
 }

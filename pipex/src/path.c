@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 19:03:35 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:02:55 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/16 21:12:17 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	**find_path(char **envp)
 		{
 			ret_path = ft_strdup(envp[index] + 5);
 			res = ft_split(ret_path, ':');
+			ft_free(ret_path);
 			return (res);
 		}
 		index++;

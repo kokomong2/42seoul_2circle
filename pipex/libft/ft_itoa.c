@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 16:25:56 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:05:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 static int	getnumsize(int n);
 

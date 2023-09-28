@@ -6,11 +6,11 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:41:40 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/29 20:07:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/13 21:05:03 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/pipex.h"
 
 static size_t	getwords(char const *s, char c);
 static char		**getres(char **result, size_t wordcnt, char const *s, char c);
@@ -83,9 +83,9 @@ static char	**freeresult(size_t i, char **result)
 	index = 0;
 	while (index < i)
 	{
-		free(result[index]);
+		ft_free(result[index]);
 		index++;
 	}
-	free(result);
+	ft_free(result);
 	return (0);
 }
