@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 18:57:47 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/27 20:12:57 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/28 20:29:50 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	get_child(t_arg *arg, int i, int argc, char **envp)
 	{
 		close(arg->pipe_fd[0]);
 		dup_stdout(arg, i, argc);
+		if (arg->tmp_fd < 0)
+			exit_free(arg);
 		if (dup2(arg->tmp_fd, STDIN_FILENO) == -1)
 			exit_perror(DUP_ERR, arg);
 		close(arg->tmp_fd);
-		if (arg->tmp_fd < 0)
-			exit_free(arg);
 		if (arg->path == NULL)
 			exit_cmd_err(arg->cmd_args[0], FILE_NAME_ERR);
 		arg->cmd = get_cmd(arg->path, arg->cmd_args[0]);

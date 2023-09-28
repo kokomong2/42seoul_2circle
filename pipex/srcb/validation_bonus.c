@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:41:04 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/27 17:31:43 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/28 20:33:51 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_err(char *msg, char *str)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd(str, 2);
-	write(1, "\n", 1);
+	write(2, "\n", 1);
 }
 
 void	exit_cmd_err(char *msg, char *str)
