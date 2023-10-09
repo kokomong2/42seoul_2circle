@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 19:23:14 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/17 21:31:17 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/05 22:29:47 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-t_arg	*init_args(void)
+void	init_args(t_arg *arg)
 {
-	t_arg	*arg;
-
-	arg = (t_arg *)malloc(sizeof(t_arg));
 	if (!arg)
 		exit(1);
 	arg->path = NULL;

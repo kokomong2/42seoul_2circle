@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 16:04:59 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/28 20:24:06 by sgo              ###   ########.fr       */
+/*   Updated: 2023/09/28 23:37:58 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	exit_cmd_err(char *msg, char *str)
 
 void	exit_free(t_arg *arg)
 {
+	close(arg->tmp_fd);
+	close(arg->pipe_fd[1]);
+	close(arg->pipe_fd[0]);
 	free_args(arg);
 	exit(1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 15:06:16 by sgo               #+#    #+#             */
-/*   Updated: 2023/08/21 20:58:14 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/09 16:54:38 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	dfs(t_game *game, int *visited, int *cnt, t_xy *xy)
 	if (game->map->line[index] == 'E')
 	{
 		xy->is_exit = 1;
-		return ;
+		// return ;
 	}
 	if (game->map->line[index] == 'C')
 		*cnt = *cnt + 1;

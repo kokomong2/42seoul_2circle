@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 13:27:31 by sgo               #+#    #+#             */
-/*   Updated: 2023/07/29 16:32:25 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/05 23:08:25 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ void	ft_ss(t_info *info)
 	int	tmp;
 
 	write(1, "ss\n", 3);
-	if (info->size_a < 2)
+	if (info->size_a < 2 || info->size_b < 2)
 		return ;
 	tmp = info->stack_a[info->size_a - 1];
 	info->stack_a[info->size_a - 1] = info->stack_a[info->size_a - 2];
 	info->stack_a[info->size_a - 2] = tmp;
-	if (info->size_b < 2)
-		return ;
 	tmp = info->stack_a[info->size_b - 1];
 	info->stack_a[info->size_b - 1] = info->stack_a[info->size_b - 2];
 	info->stack_a[info->size_b - 2] = tmp;

@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:26:29 by sgo               #+#    #+#             */
-/*   Updated: 2023/09/28 20:33:38 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/05 22:32:15 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+void	foo(void)
+{
+	system("leaks pipex");
+}
 
 int	main(int argc, char *argv[], char **envp)
 {
 	int		status;
 	t_arg	*arg;
 
+	atexit(foo);
 	if (argc < 5)
 	{
 		print_err(ERR_ARG, NULL);
