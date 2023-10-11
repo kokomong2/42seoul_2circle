@@ -6,31 +6,36 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 05:44:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/09 17:42:52 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:14:46 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int mutex_printf(t_philo *philo, int time, char *msg)
+int mutex_printf(t_philo *philo, long long time, char *msg)
 {
     t_args *args;
     int     result;
 
     args = philo->args;
     result = FALSE;
-    pthread_mutex_lock(&philo->args->print_mutex);
-    if (args->fin_cnt < args->philo_num)
+	pthread_mutex_lock(&args->print_mutex);
+    if (args->finish == 0)
     {
         if (msg == NULL)
         {
-            args->fin_cnt = args->must_eat;
+            args->fin_cnt = args->philo_num;
             msg = MSG_DIED;
-            args->finish = 1;
         }
-        printf("%d %d %s\n", time, philo->philo_id, msg);
+        printf("%lld %d %s\n", time, philo->philo_id, msg);
         result = SUCCESS;
     }
-    pthread_mutex_unlock(&philo->args->print_mutex);
+	pthread_mutex_unlock(&args->print_mutex);
     return (result);
+}
+
+int    print_error(char *msg)
+{
+   printf(RED"%s\n", msg);
+   return (ERROR);
 }

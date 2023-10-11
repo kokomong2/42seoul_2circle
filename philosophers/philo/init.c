@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:44:54 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/09 18:25:06 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:12:21 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ int init_args(int argc, char *argv[], t_args *args)
         args->must_eat = ft_atoi(argv[5]);
     else
         args->must_eat = 0;
-    if (args->philo_num < 1 || args->philo_num < 0 || args->time_eat < 0 || args->time_die < 0 \
+    if (args->philo_num < 1 || args->time_eat < 0 || args->time_die < 0 \
         || args->time_sleep < 0 || args->must_eat < 0)
         return (ERROR);
-    args->finish = 0;
     args->fin_cnt = 0;
-    pthread_mutex_init(&(args->print_mutex), NULL);
+    args->finish = 0;
+    pthread_mutex_init(&args->finish_mutex, NULL);
+    pthread_mutex_init(&args->print_mutex, NULL);
     if (init_fork(args) == ERROR)
         return (ERROR);
     gettimeofday(&time, NULL);
@@ -72,10 +73,6 @@ t_philo *init_philos(t_args *args)
         else
             philos[index].r_fork = 1;
 	    philos[index].eat_cnt = 0;
-	    philos[index].status_eating = 0;
-	    philos[index].status_sleeping = 0;
-	    philos[index].stauts_thinking = 0;
-	    philos[index].status_died = 0;
         philos[index].last_eat = get_time(args);
         index++;
     }

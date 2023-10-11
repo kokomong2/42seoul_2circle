@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:15:39 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/09 18:30:29 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:13:35 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void    *dining(t_philo *philo)
 			return (NULL);
 		if (sleep_think(args, philo) == FALSE)
 			return (NULL);
+		usleep(200);
 	}
 	return (NULL);
 }
@@ -52,7 +53,8 @@ int	start_dining(t_philo *philos, t_args *args)
 int	pick_fork(t_args *args, t_philo *philo)
 {
 	pthread_mutex_lock(&args->forks[philo->l_fork]);
-	if (mutex_printf(philo, get_time(args), MSG_FORK) == FALSE)
+	if (mutex_printf(philo, get_time(args), MSG_FORK) == FALSE || \
+		args->philo_num == 1)
 	{
 		pthread_mutex_unlock(&args->forks[philo->l_fork]);
 		return (FALSE);
@@ -60,6 +62,7 @@ int	pick_fork(t_args *args, t_philo *philo)
 	pthread_mutex_lock(&args->forks[philo->r_fork]);
 	if (mutex_printf(philo, get_time(args), MSG_FORK) == FALSE)
 	{
+		pthread_mutex_unlock(&args->forks[philo->l_fork]);
 		pthread_mutex_unlock(&args->forks[philo->r_fork]);
 		return (FALSE);
 	}
@@ -76,9 +79,19 @@ int	eating(t_args *args, t_philo *philo)
 	}
 	philo->eat_cnt++;
 	if (philo->eat_cnt == args->must_eat)
+	{
+		pthread_mutex_lock(&args->finish_mutex);
 		args->fin_cnt++;
+		pthread_mutex_unlock(&args->finish_mutex);
+	}
+	if (args->fin_cnt == args->philo_num)
+	{
+		pthread_mutex_lock(&args->print_mutex);
+		args->finish = 1;
+		pthread_mutex_unlock(&args->print_mutex);
+	}
 	philo->last_eat = get_time(args);
-	usleep(1000 * args->time_eat);
+	ft_usleep(args->time_eat, args);
 	pthread_mutex_unlock(&args->forks[philo->l_fork]);
 	pthread_mutex_unlock(&args->forks[philo->r_fork]);
 	return (SUCCESS);
@@ -88,9 +101,8 @@ int	sleep_think(t_args *args, t_philo *philo)
 {
 	if (mutex_printf(philo, get_time(args), MSG_SLEEPING) == FALSE)
 		return (FALSE);
-	usleep(1000 * args->time_sleep);
+	ft_usleep(args->time_sleep, args);
 	if (mutex_printf(philo, get_time(args), MSG_THINKING) == FALSE)
 		return (FALSE);
 	return (SUCCESS);
 }
-

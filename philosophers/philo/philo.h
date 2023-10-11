@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:19:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/09 18:10:05 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:12:12 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@
 # define MSG_EATING "is eating"
 # define MSG_SLEEPING "is sleeping"
 # define MSG_THINKING "is thinking"
-# define MSG_DIED "died"
+# define MSG_DIED	"died"
+
+# define ARGC_ERROR "Wrong argument! Please check usage."
+
+# define RED		"\x1b[31m"
 
 # define SUCCESS 0
 # define ERROR 1
-# define FALSE 2
+# define FALSE -1
 
 typedef struct s_args
 {
@@ -38,10 +42,11 @@ typedef struct s_args
 	int					time_sleep;
 	int					must_eat;
 	struct timeval		first_time;
-	int					finish;
-	int					fin_cnt;
 	pthread_mutex_t		*forks;
+	pthread_mutex_t		finish_mutex;
+	int					fin_cnt;
 	pthread_mutex_t		print_mutex;
+	int					finish;
 }				t_args;
 
 typedef struct s_philo
@@ -52,11 +57,7 @@ typedef struct s_philo
 	int			l_fork;
 	int			r_fork;
 	int			eat_cnt;
-	int			status_eating;
-	int			status_sleeping;
-	int			stauts_thinking;
-	int			status_died;
-	int			last_eat;
+	long long	last_eat;
 }				t_philo;
 
 int		ft_atoi(const char *str);
@@ -66,8 +67,10 @@ int 	init_fork(t_args *args);
 void    *dining(t_philo *philo);
 int		start_dining(t_philo *philos, t_args *args);
 int 	wait_finish(t_philo *philos, t_args *args);
-int		mutex_printf(t_philo *philo, int time, char *msg);
-int 	get_time(t_args *args);
+int		mutex_printf(t_philo *philo, long long time, char *msg);
+long long 	get_time(t_args *args);
 void	monitoring(t_philo *philo, t_args *args);
+int 	ft_usleep(long long time, t_args *args);
+int    print_error(char *msg);
 
 # endif

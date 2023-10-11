@@ -1,11 +1,10 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
+# -fsanitize=thread
 RM = rm -f
-# DIR = philo/
 SRCS = main.c dining.c init.c  main.c util.c wait.c print.c time.c \
 	monitoring.c
-# SRCS = $(addprefix $(DIR), $(SRC))
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
