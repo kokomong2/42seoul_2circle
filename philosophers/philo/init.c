@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:44:54 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 21:12:21 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:38:24 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_philo *init_philos(t_args *args)
 {
     t_philo *philos;
     int index;
+    int tmp;
 
     index = 1;
     philos = (t_philo *)malloc(sizeof(t_philo) * (args->philo_num + 1));
@@ -72,6 +73,12 @@ t_philo *init_philos(t_args *args)
 	        philos[index].r_fork = index + 1;
         else
             philos[index].r_fork = 1;
+        if (index % 2 == 0)
+        {
+            tmp = philos[index].l_fork;
+            philos[index].l_fork = philos[index].r_fork;
+            philos[index].r_fork = tmp;
+        }
 	    philos[index].eat_cnt = 0;
         philos[index].last_eat = get_time(args);
         index++;

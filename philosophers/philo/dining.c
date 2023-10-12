@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:15:39 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 21:13:35 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/12 19:34:53 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void    *dining(t_philo *philo)
 	t_args *args;
 
 	args = philo->args;
+	philo->last_eat = get_time(args);
 	while (1)
 	{
 		if (philo->philo_id % 2 == 0)
@@ -31,7 +32,7 @@ void    *dining(t_philo *philo)
 			return (NULL);
 		if (sleep_think(args, philo) == FALSE)
 			return (NULL);
-		usleep(200);
+		usleep(100);
 	}
 	return (NULL);
 }

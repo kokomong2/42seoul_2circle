@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 # -fsanitize=thread
 RM = rm -f
 SRCS = main.c dining.c init.c  main.c util.c wait.c print.c time.c \
-	monitoring.c
+	monitoring.c free.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

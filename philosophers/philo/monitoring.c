@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:06:27 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 20:32:28 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:20:08 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	monitoring(t_philo *philo, t_args *args)
 			return ;
 		}
 		index = (index % args->philo_num) + 1;
-		usleep(150);
+		usleep(100);
 	}
 }

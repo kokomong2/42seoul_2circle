@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 05:44:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 21:14:46 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/11 21:16:07 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int mutex_printf(t_philo *philo, long long time, char *msg)
     {
         if (msg == NULL)
         {
-            args->fin_cnt = args->philo_num;
+            args->finish = 1;
             msg = MSG_DIED;
         }
         printf("%lld %d %s\n", time, philo->philo_id, msg);
