@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:38:40 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 17:32:41 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 17:28:59 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,20 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return ((int)res);
+}
+
+void	finish_eating(t_args *args)
+{
+	int	tmp;
+
+	pthread_mutex_lock(&args->finish_mutex);
+	args->fin_cnt++;
+	tmp = args->fin_cnt;
+	pthread_mutex_unlock(&args->finish_mutex);
+	if (tmp == args->philo_num)
+	{
+		pthread_mutex_lock(&args->print_mutex);
+		args->finish = 1;
+		pthread_mutex_unlock(&args->print_mutex);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:15:39 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 17:09:32 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 17:35:40 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*dining(t_philo *philo)
 			return (NULL);
 		if (sleep_think(args, philo) == FALSE)
 			return (NULL);
-		usleep(100);
+		usleep(200);
 	}
 	return (NULL);
 }
@@ -81,25 +81,15 @@ int	eating(t_args *args, t_philo *philo)
 		pthread_mutex_unlock(&args->forks[philo->r_fork]);
 		return (FALSE);
 	}
-	philo->eat_cnt++;
-	if (philo->eat_cnt == args->must_eat)
-	{
-		pthread_mutex_lock(&args->finish_mutex);
-		args->fin_cnt++;
-		if (args->fin_cnt == args->philo_num)
-		{
-			pthread_mutex_lock(&args->print_mutex);
-			args->finish = 1;
-			pthread_mutex_unlock(&args->print_mutex);
-		}
-		pthread_mutex_unlock(&args->finish_mutex);
-	}
 	pthread_mutex_lock(&philo->last_eat_mutex);
 	philo->last_eat = get_time(philo);
 	pthread_mutex_unlock(&philo->last_eat_mutex);
 	ft_usleep(args->time_eat, args, philo);
 	pthread_mutex_unlock(&args->forks[philo->l_fork]);
 	pthread_mutex_unlock(&args->forks[philo->r_fork]);
+	philo->eat_cnt++;
+	if (philo->eat_cnt == args->must_eat)
+		finish_eating(args);
 	return (SUCCESS);
 }
 

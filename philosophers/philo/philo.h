@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:19:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 17:11:33 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 17:29:30 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ void		ft_usleep(long long time, t_args *args, t_philo *philo);
 int			print_error(char *msg);
 void		free_args(t_args *args);
 void		free_philos(t_philo *philo, t_args *args);
+void		finish_eating(t_args *args);
 
 # endif
