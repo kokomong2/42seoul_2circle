@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:19:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 15:31:41 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 17:11:33 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ typedef struct s_philo
 }			t_philo;
 
 int			ft_atoi(const char *str);
-int 		init_args(int argc, char *argv[], t_args *args);
+int			init_args(int argc, char *argv[], t_args *args);
 t_philo 	*init_philos(t_args *args);
-int 		init_fork(t_args *args);
-void    	*dining(t_philo *philo);
+int			init_fork(t_args *args);
+void		*dining(t_philo *philo);
 int			start_dining(t_philo *philos, t_args *args);
-void    	wait_finish(t_philo *philos, t_args *args);
+void		wait_finish(t_philo *philos, t_args *args);
 int			mutex_printf(t_philo *philo, char *msg);
 long long	get_time(t_philo *philo);
 void		monitoring(t_philo *philo, t_args *args);
 void		ft_usleep(long long time, t_args *args, t_philo *philo);
-int    		print_error(char *msg);
+int			print_error(char *msg);
 void		free_args(t_args *args);
 void		free_philos(t_philo *philo, t_args *args);
 

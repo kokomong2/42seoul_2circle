@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dining.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:15:39 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 15:51:50 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 17:09:32 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	pick_fork(t_args *args, t_philo *philo);
 int	eating(t_args *args, t_philo *philo);
 int	sleep_think(t_args *args, t_philo *philo);
 
-void    *dining(t_philo *philo)
+void	*dining(t_philo *philo)
 {	
 	t_args 			*args;
-	struct timeval	time;	
+	struct timeval	time;
 
 	args = philo->args;
 	gettimeofday(&time, NULL);
