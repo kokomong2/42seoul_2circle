@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:19:29 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 00:05:15 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 00:35:35 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 	t_args	args;
 	t_philo	*philos;
 
-	atexit(foo);	
+	// atexit(foo);	
 	if (argc < 5 || argc > 6)
 		return (print_error(ARGC_ERROR));
 	if (init_args(argc, argv, &args) == ERROR)

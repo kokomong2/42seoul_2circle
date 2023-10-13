@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:19:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/12 22:46:56 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 15:31:41 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_args
 	int					time_eat;
 	int					time_sleep;
 	int					must_eat;
-	struct timeval		first_time;
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		finish_mutex;
 	int					fin_cnt;
@@ -51,14 +50,16 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	int			philo_id;
-	pthread_t	thread;
-	t_args		*args;
-	int			l_fork;
-	int			r_fork;
-	int			eat_cnt;
-	long long	last_eat;
-}				t_philo;
+	int				philo_id;
+	pthread_t		thread;
+	t_args			*args;
+	int				l_fork;
+	int				r_fork;
+	int				eat_cnt;
+	struct timeval	start_time;
+	pthread_mutex_t	last_eat_mutex;
+	long long		last_eat;
+}			t_philo;
 
 int			ft_atoi(const char *str);
 int 		init_args(int argc, char *argv[], t_args *args);
@@ -67,10 +68,10 @@ int 		init_fork(t_args *args);
 void    	*dining(t_philo *philo);
 int			start_dining(t_philo *philos, t_args *args);
 void    	wait_finish(t_philo *philos, t_args *args);
-int			mutex_printf(t_philo *philo, long long time, char *msg);
-long long 	get_time(t_args *args);
+int			mutex_printf(t_philo *philo, char *msg);
+long long	get_time(t_philo *philo);
 void		monitoring(t_philo *philo, t_args *args);
-int 		ft_usleep(long long time, t_args *args);
+void		ft_usleep(long long time, t_args *args, t_philo *philo);
 int    		print_error(char *msg);
 void		free_args(t_args *args);
 void		free_philos(t_philo *philo, t_args *args);

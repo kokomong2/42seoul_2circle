@@ -6,7 +6,7 @@
 /*   By: sgo <sgo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:44:54 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/11 21:38:24 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/13 07:27:06 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int init_args(int argc, char *argv[], t_args *args)
 {
-    struct timeval time;
-
     args->philo_num = ft_atoi(argv[1]);
     args->time_die = ft_atoi(argv[2]);
     args->time_eat = ft_atoi(argv[3]);
@@ -33,8 +31,6 @@ int init_args(int argc, char *argv[], t_args *args)
     pthread_mutex_init(&args->print_mutex, NULL);
     if (init_fork(args) == ERROR)
         return (ERROR);
-    gettimeofday(&time, NULL);
-    args->first_time = time;
     return (SUCCESS);
 }
 
@@ -69,18 +65,15 @@ t_philo *init_philos(t_args *args)
         philos[index].philo_id = index;
         philos[index].args = args;
 	    philos[index].l_fork = index;
-        if (index + 1 <= args->philo_num)
-	        philos[index].r_fork = index + 1;
-        else
-            philos[index].r_fork = 1;
+	    philos[index].r_fork = index % args->philo_num + 1;
         if (index % 2 == 0)
         {
             tmp = philos[index].l_fork;
             philos[index].l_fork = philos[index].r_fork;
             philos[index].r_fork = tmp;
         }
+        pthread_mutex_init(&philos[index].last_eat_mutex, NULL);
 	    philos[index].eat_cnt = 0;
-        philos[index].last_eat = get_time(args);
         index++;
     }
     return (philos);
