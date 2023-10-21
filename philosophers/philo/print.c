@@ -6,13 +6,13 @@
 /*   By: sgo <sgo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 05:44:46 by sgo               #+#    #+#             */
-/*   Updated: 2023/10/13 17:12:11 by sgo              ###   ########.fr       */
+/*   Updated: 2023/10/14 13:59:36 by sgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int mutex_printf(t_philo *philo, char *msg)
+int	mutex_printf(t_philo *philo, char *msg)
 {
 	t_args		*args;
 	int			result;
@@ -38,6 +38,6 @@ int mutex_printf(t_philo *philo, char *msg)
 
 int	print_error(char *msg)
 {
-	printf(RED"%s\n", msg);
+	printf("%s\n", msg);
 	return (ERROR);
 }
